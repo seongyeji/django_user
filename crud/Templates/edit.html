@@ -1,0 +1,14 @@
+<h1>update</h1>
+
+<form action="{% url 'update' blog.id %}" method="post">
+    {% csrf_token %}
+    <label for="title">제목 : </label>
+    <input type="text" name="title" id="title" value="{{blog.title}}">
+    <br>
+    <label for="writer">작성자 : </label>
+    <input type="text" name="writer" id="writer" value="{{blog.writer}}">
+    <br>
+    <label for="body">내용 : </label>
+    <textarea name="body" id="body" cols="30" rows="10">{{blog.body}}</textarea>
+    <input type="submit">
+</form>

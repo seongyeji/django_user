@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>등록페이지</title>
+</head>
+<body>
+    <h1>Write</h1>
+    <form action="{% url 'create' %}" method="POST">
+        {% csrf_token %}
+        <label for="title">제목 : </label>
+        <input type="text" name="title" id="title">
+        <br>
+        <label for="writer">작성자 : </label>
+        <input type="text" name="writer" id="writer">
+        <br>
+        <label for="body">내용 : </label>
+        <textarea name="body" id="body" cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit">
+    </form>
+</body>
+</html>
