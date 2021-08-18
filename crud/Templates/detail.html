@@ -13,7 +13,7 @@
     날짜 : {{blog.pub_date}}
     내용 : {{blog.body}}
 
-    <a href="{% url 'edit' blog.id %}">수정</a>
+    <a href="{% url 'update' blog.id %}">수정</a>
     <a href="{% url 'delete' blog.id %}">삭제</a>
     <a href="{% url 'home' %}">홈으로</a>
 </body>

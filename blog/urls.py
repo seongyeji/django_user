@@ -20,10 +20,8 @@ from crud.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home"),
-    path('new/', new, name="new"),
-    path('create/', create, name="create"),
     path('detail/<int:id>', detail, name="detail"),
-    path('edit/<int:id>', edit, name="edit"),
+    path('create/', create, name="create"),
     path('update/<int:id>', update, name="update"),
     path('delete/<int:id>', delete, name="delete"),
 ]
