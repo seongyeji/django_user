@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Blog
 from django.utils import timezone
+from .forms import BlogForm
 
 # Create your views here.
 
@@ -14,15 +15,16 @@ def detail(req, id):
 
 def create(req):
     if req.method =="POST":
-        new_blog = Blog()
-        new_blog.title = req.POST['title']
-        new_blog.writer = req.POST['writer']
-        new_blog.pub_date = timezone.now()
-        new_blog.body = req.POST['body']
-        new_blog.save()
-        return redirect('detail', str(new_blog.id))
+        form = BlogForm(req.POST, req.FILES)
+        if form.is_valid:
+            new_blog = form.save(commit = False)
+            new_blog.pub_date = timezone.now()
+            new_blog.save()
+            return redirect('detail', str(new_blog.id))
+        return redirect('home')
     else :
-        return render(req, 'new.html')
+        form = BlogForm()
+        return render(req, 'new.html', {'form':form})
 
 def update(req, id):
     if req.method =="POST":
